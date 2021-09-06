@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategoriesTable extends Migration
+class CreateVaccinationCentersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,15 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('vaccination_centers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('min_age')->nullable();
+            $table->unsignedBigInteger('upazila_id');
+            $table->unsignedBigInteger('vaccine_id');
+            $table->unsignedBigInteger('available');
             $table->timestamps();
+
+            $table->foreign('upazila_id')->references('id')->on('upazilas');
         });
     }
 
@@ -28,6 +32,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('vaccination_centers');
     }
 }

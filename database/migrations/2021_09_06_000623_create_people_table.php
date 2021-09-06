@@ -15,6 +15,10 @@ class CreatePeopleTable extends Migration
     {
         Schema::create('people', function (Blueprint $table) {
             $table->id();
+            $table->string('id_no');
+            $table->dateTime('dob');
+            $table->string('office');
+            $table->unsignedBigInteger('registered')->default(0);
             $table->timestamps();
         });
     }
