@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\VerificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,8 @@ Route::get( '/test', function () {
 	return 'Changed this text';
 });
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::post('/verify', [VerificationController::class, 'verify']);
+
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
