@@ -22,6 +22,37 @@
                         {{ __('Categories') }}
                     </x-nav-link>
                 </div>
+                
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('divisions.index')" :active="request()->routeIs('divisions.index')">
+                        {{ __('Locations') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('peoples.index')" :active="request()->routeIs('peoples.index')">
+                        {{ __('Peoples') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('vaccine.index')" :active="request()->routeIs('vaccine.index')">
+                        {{ __('Vaccines') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('vaccination-center.index')" :active="request()->routeIs('vaccination-center.index')">
+                        {{ __('Vaccination Centers') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('registration.index')" :active="request()->routeIs('registration.index')">
+                        {{ __('Registration') }}
+                    </x-nav-link>
+                </div>
+
             </div>
 
             <!-- Settings Dropdown -->

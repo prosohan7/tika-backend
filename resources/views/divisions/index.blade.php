@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Categories') }}
+            {{ __('Divisions') }}
         </h2>
     </x-slot>
 
@@ -14,19 +14,25 @@
                         {{ Session::get('message') }}
                     </div>
                     @endif
+
                     <table class="w-full border-r border-b">
                         <tr>
-                            <th class="border-l border-t px-2 py-1 text-left">Name</th>
-                            <th class="border-l border-t px-2 py-1 text-tcenter">Minimum age</th>
+                            <th class="border-l border-t px-2 py-1 text-left">Divisions Name</th>
                             <th class="border-l border-t px-2 py-1 text-center">Actions</th>
                         </tr>
 
-                        @foreach($categories as $category)
+                        @foreach($divisions as $division)
                         <tr>
-                            <td class="border-l border-t px-2 py-1 text-left">{{$category->name}}</td>
-                            <td class="border-l border-t px-2 py-1 text-center">{{$category->min_age}}</td>
+                            <td class="border-l border-t px-2 py-1 text-left">
+                                @if ( $division->enabled == 0 ) <del> @endif
+                                {{$division->name}}
+                                @if ( $division->enabled == 0 ) </del> @endif
+                            </td>
                             <td class="border-l border-t px-2 py-1 text-center">
-                                <a href="{{ route( 'categories.edit', $category->id ) }}">Edit</a>
+                                <a class="inline-block" href="{{ route( 'divisions.edit', $division->id ) }}">Edit</a>
+                                <form action="{{ route( 'divisions-enable-disable', $division->id ) }}" method="POST" class="inline-block"> @csrf
+                                    <button type="submit">{{ $division->enabled == 0 ? 'Restore' : 'Archive' }}</button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach
